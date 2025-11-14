@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Workshop - Learner Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 850px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #1a2a6c, #b21f1f, #fdbb2d);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1a2a6c;
+            margin-bottom: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, #1a2a6c, #b21f1f, #fdbb2d);
+            border-radius: 2px;
+        }
+        
+        .top-notice {
+            background: #fff3cd;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #856404;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            font-size: 1.1rem;
+        }
+        
+        .top-notice i {
+            color: #e74c3c;
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .enrollment-note {
+            margin-top: 10px;
+            font-size: 1rem;
+            font-style: italic;
+            color: #b21f1f;
+        }
+        
+        .opportunity-section {
+            background: linear-gradient(135deg, #fff9e6, #fff3cd);
+            border: 2px solid #fdbb2d;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .opportunity-title {
+            color: #b21f1f;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .opportunity-content {
+            color: #1a2a6c;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .quote-section {
+            background: #f8f9fa;
+            border-left: 4px solid #1a2a6c;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #2c3e50;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-weight: 600;
+            color: #1a2a6c;
+            margin-top: 10px;
+        }
+        
+        .urgency-note {
+            background: #e74c3c;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        
+        .journey-section {
+            background: linear-gradient(135deg, #e8f4fd, #d1ecf1);
+            border: 2px solid #1a2a6c;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .journey-title {
+            color: #1a2a6c;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .journey-content {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #1a2a6c;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #fdbb2d;
+            border-radius: 50%;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5ee;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        input:focus,
+        textarea:focus {
+            border-color: #1a2a6c;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 42, 108, 0.2);
+            background: white;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .radio-group.vertical {
+            flex-direction: column;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: 2px solid #e1e5ee;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 150px;
+            cursor: pointer;
+        }
+        
+        .radio-option.vertical-option {
+            flex: none;
+            width: 100%;
+        }
+        
+        .radio-option:hover {
+            border-color: #1a2a6c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .radio-option input {
+            margin-right: 10px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+        
+        .radio-option label {
+            margin-bottom: 0;
+            padding-left: 0;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .radio-option label::before {
+            display: none;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .enroll-section {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px dashed #e1e5ee;
+        }
+        
+        .enroll-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s;
+            box-shadow: 0 8px 20px rgba(26, 42, 108, 0.4);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .enroll-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .enroll-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(26, 42, 108, 0.5);
+        }
+        
+        .enroll-btn:active {
+            transform: translateY(-2px);
+        }
+        
+        .fee-note {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: #b21f1f;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .fee-note.visible {
+            opacity: 1;
+        }
+        
+        .validation-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 45px;
+            font-size: 1.2rem;
+            color: #1a2a6c;
+        }
+        
+        .success {
+            color: #2ecc71;
+        }
+        
+        .error {
+            color: #e74c3c;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .radio-option {
+                min-width: 100%;
+            }
+            
+            .enroll-btn {
+                padding: 15px 40px;
+                font-size: 1.1rem;
+            }
+            
+            .opportunity-section, .journey-section {
+                padding: 20px;
+            }
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #b21f1f;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .currency-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #fdbb2d;
+            opacity: 0.7;
+        }
+        
+        .option-label {
+            font-weight: 500;
+            color: #1a2a6c;
+        }
+        
+        .caution-message {
+            background: #fff3cd;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #856404;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            font-size: 1.2rem;
+        }
+        
+        .caution-message i {
+            color: #e74c3c;
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .progress-indicator {
+            text-align: center;
+            margin: 10px 0;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: #e1e5ee;
+            border-radius: 3px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1a2a6c, #b21f1f);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="currency-icon">💹</div>
+        <h1>LEARNER'S DETAILS</h1>
+        
+        <!-- Top Important Notice -->
+        <div class="top-notice">
+            <i>⚠️</i> <strong>Important:</strong> To enroll and view the fee structure, you must complete all questions in the form.
+            <div class="enrollment-note">"The Enrollment link will be available once all questions have been answered."</div>
+        </div>
+        
+        <p class="form-header">Fill out this form to enroll in our exclusive Forex Workshop</p>
+        
+        <div class="progress-indicator">Form Completion: <span id="progress-text">0%</span></div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        
+        <form id="learnerForm">
+            <div class="form-group">
+                <label for="name">NAME:</label>
+                <input type="text" id="name" name="name" required>
+                <div class="input-icon">👤</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="contact">CONTACT NO.:</label>
+                <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
+                <div class="input-icon">📱</div>
+                <div class="validation-message" id="contactValidation">Please enter a valid 10-digit phone number</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">EMAIL ID:</label>
+                <input type="email" id="email" name="email" required>
+                <div class="input-icon">✉️</div>
+                <div class="validation-message" id="emailValidation">Please enter a valid email address</div>
+            </div>
+            
+            <div class="form-group">
+                <label>PRIMARY GOAL FOR THIS WORKSHOP (Select One):</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="learn" name="purpose" value="To Learn" required>
+                        <label for="learn" class="option-label">To Learn</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="earn" name="purpose" value="To Earn">
+                        <label for="earn" class="option-label">To Earn</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="both" name="purpose" value="Both">
+                        <label for="both" class="option-label">Both</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="whyLearn">WHY DO YOU WANT TO LEARN ABOUT THE FOREX MARKET?</label>
+                <textarea id="whyLearn" name="whyLearn" placeholder="Tell us about your motivation to learn Forex trading..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>WHAT WOULD YOU LIKE TO DO IN THE FOREX MARKET (Select One):</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="analyst" name="role" value="Analyst" required>
+                        <label for="analyst" class="option-label">Analyst</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="trader" name="role" value="Trader">
+                        <label for="trader" class="option-label">Trader</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="investor" name="role" value="Investor">
+                        <label for="investor" class="option-label">Investor</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="all" name="role" value="All">
+                        <label for="all" class="option-label">All</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="expectation">WHAT ARE YOUR EXPECTATIONS FROM THIS WORKSHOP?</label>
+                <textarea id="expectation" name="expectation" placeholder="What do you hope to achieve from this workshop?" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>HOW MUCH CAPITAL ARE YOU PLANNING TO INVEST IN THE FOREX MARKET?</label>
+                <div class="radio-group vertical">
+                    <div class="radio-option vertical-option">
+                        <input type="radio" id="below25k" name="capital" value="Below ₹25,000" required>
+                        <label for="below25k" class="option-label">Below ₹25,000</label>
+                    </div>
+                    <div class="radio-option vertical-option">
+                        <input type="radio" id="above25k" name="capital" value="₹25,000 to ₹1 Lakh">
+                        <label for="above25k" class="option-label">₹25,000 to ₹1 Lakh</label>
+                    </div>
+                    <div class="radio-option vertical-option">
+                        <input type="radio" id="above1L" name="capital" value="₹1 Lakh to ₹3 Lakh">
+                        <label for="above1L" class="option-label">₹1 Lakh to ₹3 Lakh</label>
+                    </div>
+                    <div class="radio-option vertical-option">
+                        <input type="radio" id="above3L" name="capital" value="Above ₹3 Lakh">
+                        <label for="above3L" class="option-label">Above ₹3 Lakh</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+        <!-- Limited-Time Opportunity Section -->
+        <div class="opportunity-section">
+            <h2 class="opportunity-title">A Limited-Time Opportunity</h2>
+            <div class="opportunity-content">
+                <p>This is the best opportunity for joining in this price. We are offering this exceptional value at a significantly discounted price as a special offer plan for you. This is not just a purchase; it's an investment in your future at an unbeatable rate.</p>
+                
+                <p>We strongly encourage you to act swiftly, as this exclusive window will not remain open for long.</p>
+                
+                <div class="quote-section">
+                    "The greatest investment a young person can make is in their own education, in their own mind... what you learn once stays with you forever. It will not only improve your life, but it will also improve the lives of those around you."
+                    <div class="quote-author">— Visionary Investor</div>
+                </div>
+                
+                <p>Don't miss this opportunity to secure your access today!</p>
+            </div>
+            <div class="urgency-note">
+                ⚠️ LIMITED TIME OFFER - ACT NOW!
+            </div>
+        </div>
+        
+        <!-- Journey Section -->
+        <div class="journey-section">
+            <h2 class="journey-title">Ready to Master Forex Trading?</h2>
+            <div class="journey-content">
+                Join our comprehensive workshop and become a professional Forex trader.
+            </div>
+        </div>
+        
+        <div class="enroll-section">
+            <div class="caution-message">
+                <i>⚠️</i> <strong>Important:</strong> To enroll and view the fee structure, you must complete all questions in the form.
+            </div>
+            <a href="page2.html" class="enroll-btn" id="enrollButton">Enroll Now 9999 Rs Only</a>
+            <p class="fee-note" id="feeNote">LEARNING INVESTMENT : ( COURSE STRUCTURE FEES )</p>
+        </div>
+    </div>
+
+    <script>
+        // Get all form elements
+        const form = document.getElementById('learnerForm');
+        const enrollButton = document.getElementById('enrollButton');
+        const feeNote = document.getElementById('feeNote');
+        const progressText = document.getElementById('progress-text');
+        const progressFill = document.getElementById('progress-fill');
+        
+        // Form fields
+        const nameInput = document.getElementById('name');
+        const contactInput = document.getElementById('contact');
+        const emailInput = document.getElementById('email');
+        const whyLearnInput = document.getElementById('whyLearn');
+        const expectationInput = document.getElementById('expectation');
+        
+        // Radio groups
+        const purposeRadios = document.querySelectorAll('input[name="purpose"]');
+        const roleRadios = document.querySelectorAll('input[name="role"]');
+        const capitalRadios = document.querySelectorAll('input[name="capital"]');
+        
+        // Contact number validation
+        const contactValidation = document.getElementById('contactValidation');
+        
+        contactInput.addEventListener('input', function() {
+            const value = this.value;
+            const isValid = /^[0-9]{0,10}$/.test(value);
+            
+            if (!isValid) {
+                this.value = value.slice(0, -1); // Remove last character if not a number
+            }
+            
+            if (value.length === 10) {
+                contactValidation.style.display = 'none';
+                this.style.borderColor = '#2ecc71';
+            } else if (value.length > 0) {
+                contactValidation.style.display = 'block';
+                this.style.borderColor = '#e74c3c';
+            } else {
+                contactValidation.style.display = 'none';
+                this.style.borderColor = '#e1e5ee';
+            }
+            
+            checkFormCompletion();
+        });
+        
+        // Email validation
+        const emailValidation = document.getElementById('emailValidation');
+        
+        emailInput.addEventListener('blur', function() {
+            const email = this.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email && !emailRegex.test(email)) {
+                emailValidation.style.display = 'block';
+                this.style.borderColor = '#e74c3c';
+            } else if (email) {
+                emailValidation.style.display = 'none';
+                this.style.borderColor = '#2ecc71';
+            } else {
+                emailValidation.style.display = 'none';
+                this.style.borderColor = '#e1e5ee';
+            }
+            
+            checkFormCompletion();
+        });
+        
+        // Add event listeners to all form fields
+        const allInputs = document.querySelectorAll('input, textarea');
+        allInputs.forEach(input => {
+            input.addEventListener('input', checkFormCompletion);
+        });
+        
+        // Add event listeners to radio buttons
+        const allRadios = document.querySelectorAll('input[type="radio"]');
+        allRadios.forEach(radio => {
+            radio.addEventListener('change', checkFormCompletion);
+        });
+        
+        // Function to check if form is complete
+        function checkFormCompletion() {
+            let completedFields = 0;
+            const totalFields = 8; // Total number of required fields
+            
+            // Check name
+            if (nameInput.value.trim() !== '') completedFields++;
+            
+            // Check contact (must be exactly 10 digits)
+            if (contactInput.value.length === 10) completedFields++;
+            
+            // Check email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailRegex.test(emailInput.value)) completedFields++;
+            
+            // Check purpose radio
+            let purposeSelected = false;
+            purposeRadios.forEach(radio => {
+                if (radio.checked) purposeSelected = true;
+            });
+            if (purposeSelected) completedFields++;
+            
+            // Check why learn
+            if (whyLearnInput.value.trim() !== '') completedFields++;
+            
+            // Check role radio
+            let roleSelected = false;
+            roleRadios.forEach(radio => {
+                if (radio.checked) roleSelected = true;
+            });
+            if (roleSelected) completedFields++;
+            
+            // Check expectation
+            if (expectationInput.value.trim() !== '') completedFields++;
+            
+            // Check capital radio
+            let capitalSelected = false;
+            capitalRadios.forEach(radio => {
+                if (radio.checked) capitalSelected = true;
+            });
+            if (capitalSelected) completedFields++;
+            
+            // Calculate completion percentage
+            const completionPercentage = Math.round((completedFields / totalFields) * 100);
+            
+            // Update progress indicator
+            progressText.textContent = `${completionPercentage}%`;
+            progressFill.style.width = `${completionPercentage}%`;
+            
+            // Show/hide enroll button and fee note based on completion
+            if (completionPercentage === 100) {
+                enrollButton.classList.add('visible');
+                feeNote.classList.add('visible');
+            } else {
+                enrollButton.classList.remove('visible');
+                feeNote.classList.remove('visible');
+            }
+        }
+        
+        // Form validation and submission handling
+        enrollButton.addEventListener('click', function(e) {
+            // Only validate if it's a button (not a link)
+            if (this.tagName === 'BUTTON') {
+                e.preventDefault();
+                
+                // Basic validation
+                const requiredFields = document.querySelectorAll('input[required], textarea[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value) {
+                        isValid = false;
+                        field.style.borderColor = '#e74c3c';
+                    }
+                });
+                
+                // Check contact number
+                if (contactInput.value.length !== 10) {
+                    isValid = false;
+                    contactInput.style.borderColor = '#e74c3c';
+                    contactValidation.style.display = 'block';
+                }
+                
+                // Check email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    isValid = false;
+                    emailInput.style.borderColor = '#e74c3c';
+                    emailValidation.style.display = 'block';
+                }
+                
+                // Check if at least one radio button is selected for each group
+                const radioGroups = ['purpose', 'role', 'capital'];
+                radioGroups.forEach(group => {
+                    const selected = document.querySelector(`input[name="${group}"]:checked`);
+                    if (!selected) {
+                        isValid = false;
+                        // Highlight the radio group
+                        const radioOptions = document.querySelectorAll(`input[name="${group}"]`);
+                        radioOptions.forEach(option => {
+                            option.parentElement.style.borderColor = '#e74c3c';
+                        });
+                    }
+                });
+                
+                if (!isValid) {
+                    e.preventDefault();
+                    alert('Please fill in all required fields correctly before enrolling.');
+                }
+            }
+        });
+        
+        // Reset border color when user starts typing in a field
+        allInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.type !== 'radio') {
+                    this.style.borderColor = '#1a2a6c';
+                }
+            });
+        });
+        
+        // Reset radio button borders when one is selected
+        allRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                const groupName = this.name;
+                const radioOptions = document.querySelectorAll(`input[name="${groupName}"]`);
+                radioOptions.forEach(option => {
+                    option.parentElement.style.borderColor = '#1a2a6c';
+                });
+            });
+        });
+        
+        // Initial check
+        checkFormCompletion();
+    </script>
+</body>
+</html>
